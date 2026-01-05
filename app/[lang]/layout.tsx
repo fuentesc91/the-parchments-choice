@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Almendra_Display, Cinzel } from "next/font/google";
-import "./globals.css";
+import { notFound } from "next/navigation";
+import { hasLocale, Locale } from "./dictionaries";
+
+import "../globals.css";
 
 const garamond = EB_Garamond({
   variable: "--font-general",
@@ -23,14 +26,24 @@ export const metadata: Metadata = {
   description: "Find out where you belong",
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "es" }];
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = await params;
+
+  if (!hasLocale(lang)) notFound();
+
   return (
     <html
-      lang="es"
+      lang={lang}
       className={`${garamond.variable} ${almendraDisplay.variable} ${cinzel.variable}`}
     >
       <body className={"flex min-h-screen antialiased"}>{children}</body>
