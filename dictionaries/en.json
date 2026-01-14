@@ -2,5 +2,15 @@
   "home": {
     "findWhereYouBelongAtHogwarts": "Find where you belong at Hogwarts",
     "start": "Start"
+  },
+  "profile": {
+    "weWantToKnowMoreAboutYou": "We want to know a little more about you...",
+    "AreYouAMage": "Are you a wizard, a witch, or a magical creature?",
+    "Mage": "Mage",
+    "Witch": "Witch",
+    "MagicalCreature": "Magical Creature",
+    "WhatIsYourAge": "What is your age?",
+    "WhatIsYourWizardName": "What is your wizard name? (Optional)",
+    "Continue": "Continue"
   }
 }
